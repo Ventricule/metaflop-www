@@ -1,0 +1,21 @@
+version: '3'
+services:
+  db:
+    image: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=secret
+      - MYSQL_USER=django
+      - MYSQL_PASSWORD=secret
+      - MYSQL_DATABASE=metaflop_development
+  web:
+    build: .
+    environment:
+      RAILS_ENV: development
+    restart: unless-stopped
+    command: rackup config.ru
+    volumes:
+      - .:/myapp
+    ports:
+      - "9292:9292"
+    depends_on:
+      - db
