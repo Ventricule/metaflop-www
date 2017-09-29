@@ -31,4 +31,4 @@ RUN gem install bundler
 RUN bundle install
 
 # Make port 9292 available to the world outside this container
-EXPOSE 9292
+EXPOSE 100
