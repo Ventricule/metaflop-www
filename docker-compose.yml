@@ -3,7 +3,7 @@ services:
   db:
     image: mysql
     environment:
-      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
       - MYSQL_DATABASE=metaflop_development
   web:
     build: .

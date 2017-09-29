@@ -20,15 +20,16 @@ RUN apt-get update && \
                       --no-install-recommends && \
     rm -rf /var/lib/apt/lists/*
 
+COPY Gemfile* /tmp/
+WORKDIR /tmp
+RUN gem install bundler
+RUN bundle install
+
 # Set the working directory to /app
 WORKDIR /app
 
 # Copy the current directory contents into the container at /app
 ADD . /app
-
-# Install any needed packages
-RUN gem install bundler
-RUN bundle install
 
 # Make port 9292 available to the world outside this container
 EXPOSE 100

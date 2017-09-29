@@ -4,7 +4,6 @@ db:
     encoding: utf8
     host: db
     username: root
-    password: root
     database: metaflop_development
 
   production:
