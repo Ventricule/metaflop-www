@@ -1,0 +1,25 @@
+% box dimension definition %
+beginadjchar("f",4,cap#,0);
+
+% sidebearings %
+numeric 0,0;
+
+% construction %
+
+z40=(0u, 4u); z41=(1u, 4u); z42=(2u, 4u); z43=(3u, 4u); z44=(4u, 4u);
+
+z30=(0u, 3u); z31=(1u, 3u); z32=(2u, 3u); z33=(3u, 3u); z34=(4u, 3u);
+
+z20=(0u, 2u); z21=(1u, 2u); z22=(2u, 2u); z23=(3u, 2u); z24=(4u, 2u);
+
+z10=(0u, 1u); z11=(1u, 1u); z12=(2u, 1u); z13=(3u, 1u); z14=(4u, 1u);
+
+z00=(0u, 0u); z01=(1u, 0u); z02=(2u, 0u); z03=(3u, 0u); z04=(4u, 0u);
+
+% draw %
+draw z00--z04--z44-z42--z42--z02;
+draw z22--z24;
+
+penlabels(range 0 thru 30);
+
+endchar;

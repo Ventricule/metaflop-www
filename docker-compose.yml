@@ -2,14 +2,28 @@ version: '3'
 services:
   db:
     image: mysql
+    container_name: ${MYSQL_HOST}
     environment:
       - MYSQL_ALLOW_EMPTY_PASSWORD=yes
       - MYSQL_DATABASE=metaflop_development
+    ports:
+      - "8989:3306"
+  myadmin:
+        image: phpmyadmin/phpmyadmin
+        container_name: phpmyadmin
+        ports:
+            - "8080:80"
+        environment:
+            - PMA_ARBITRARY=1
+            - PMA_HOST=${MYSQL_HOST}
+        restart: always
+        depends_on:
+            - db
   web:
     build: .
     environment:
       RAILS_ENV: development
-    command: bundle exec rackup -o 0.0.0.0 -p 100
+    command: bash -c "bundle exec rackup -o 0.0.0.0 -p 100 && bundle exec rake db:migrate"
     volumes:
       - .:/myapp
     ports:
